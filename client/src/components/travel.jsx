@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import MapComponent from './MapComponent'
+import { test } from '../constants'
 
 const Travel = () => {
   return (
-    <div className= 'h-full w-full pt-[60px] flex flex-col justify-start items-center bg-slate-300 gap-[30px]'>
+    <div className= 'h-full w-full pt-[60px] flex flex-col justify-start items-center  gap-[30px]'>
       <p className='text-2xl font-semibold mb-5'>Destination</p>
       <section className='h-[120px] w-[50%]  flex flex-col justify-between items-center'>
             <p className='text-xl font-semibold'>Weather update</p>
@@ -43,7 +45,15 @@ const Travel = () => {
          Veritatis, velit. Asperiores eius ex hic ipsum iure soluta, 
          nam quia excepturi voluptatem cupiditate neque veniam?
         </p>
-      </div>
+      </div >
+        <p className='text-xl font-semibold'>Some hotels you can use</p>
+        <ul className='flex flex-col w-[600px] h-[250px] overflow-y-scroll justify-start items-start gap-2'>
+            {test && test.map((item)=> <li  className='  w-full h-auto'>
+                <p>{item.name}</p>
+                <p>{item.formatted_location}</p>
+            </li>)}
+        </ul>
+        <MapComponent places={test} type={'hotels'}/>
     </div>
   )
 }

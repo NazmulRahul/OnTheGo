@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 
 const UsersDashboard = () => {
   return (
-    <div className='w-screen h-screen flex'>
+    <div className='w-screen min-h-screen flex'>
       <UserProfile/>
       <Outlet/>
     </div>

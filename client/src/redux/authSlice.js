@@ -8,7 +8,7 @@ const initialState = {
   error: null,
 };
 const POST_URL = `https://jsonplaceholder.typicode.com/posts`;
-export const postUsers = createAsyncThunk('auth/postUsers ', async () => {
+export const postUsers = createAsyncThunk('auth/postUsers ', async (user) => {
   try {
     console.log('testing ');
     // const response = await axios.post(POST_URL);
