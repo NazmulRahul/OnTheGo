@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
 import axios, { all } from 'axios';
 
-const baseUrl = 'http://172.28.31.189/api/v1';
+const baseUrl = 'http://localhost:3000/api/v1';
 
 const initialState = {
   users: [],

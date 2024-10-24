@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+const baseUrl = 'http://localhost:3000/api/v1';
+
 export const fetchTrips = createAsyncThunk('trips/fetchTrips', async () => {
   try {
     const response = await axios.get('/api/trips');
@@ -13,7 +15,7 @@ export const fetchTrips = createAsyncThunk('trips/fetchTrips', async () => {
 
 export const postTrip = createAsyncThunk('trips/postTrip', async (trip) => {
   try {
-    const response = await axios.post('/api/trips', trip);
+    const response = await axios.post(`${baseUrl}/itinerary`, trip);
     return response.data;
   } catch (error) {
     return error.message;
@@ -53,7 +55,8 @@ const tripSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(postTrip.fulfilled, (state, action) => {
-        state.trips.push(action.payload);
+        // state.trips.push(action.payload);
+        console.log(action.payload);
       });
   },
 });

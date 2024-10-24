@@ -27,11 +27,11 @@ const NewTrip = () => {
     // const trips = useSelector(selectAllTrips);
 
     const handleSubmit = () => {
-        // dispatch(postTrip({journeyDate:value.startDate,returnDate:value.endDate,destination,startingPoint:source, tripBudget}));
-        // setDestination("");
-        // setSource("");
-        // setTripBudget("Budget");
-        // setValue({ startDate: null, endDate: null });
+        dispatch(postTrip({journeyDate:value.startDate,returnDate:value.endDate,destination,startingPoint:source, tripBudget}));
+        setDestination("");
+        setSource("");
+        setTripBudget("Budget");
+        setValue({ startDate: null, endDate: null });
         console.log(destination, source, tripBudget, value.endDate , value.startDate);
     }
 

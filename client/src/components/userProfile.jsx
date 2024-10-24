@@ -1,7 +1,9 @@
 import React from 'react'
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, useNavigate} from 'react-router-dom'
 
 const UserProfile = () => {
+  const navigate = useNavigate();
+
   return (
     <div className='h-full w-[30%] fixed flex flex-col justify-start items-center pt-[30px] gap-3 '>
       <div className=" w-[150px] h-[150px] rounded-full bg-gray-900 text-white">
@@ -11,7 +13,7 @@ const UserProfile = () => {
       <section className='w-[80%] h-[300px] overflow-y-scroll flex flex-col justify-start items-center border-solid border-white gap-8'>
                <div className=''>
                 <p className='text-3xl font-semibold mb-2'>Visit your trips</p>
-                <button className='w-[200px] h-[30px] rounded-2xl shadow-md shadow-white text-lg mt-2 font-medium bg-indigo-500 opacity-75 hover:opacity-100'>Plan new trip</button>
+                <button onClick={()=>navigate('/newtrip')} className='w-[200px] h-[30px] rounded-2xl shadow-md shadow-white text-lg mt-2 font-medium bg-indigo-500 opacity-75 hover:opacity-100'>Plan new trip</button>
                </div>
                <div className="w-[80%] h-10 shadow-md shadow-white rounded-lg flex justify-center items-center text-md font-semibold">cox's bazar</div>
                <div className="w-[80%] h-10 shadow-md shadow-white rounded-lg flex justify-center items-center text-md font-semibold">cox's bazar</div>

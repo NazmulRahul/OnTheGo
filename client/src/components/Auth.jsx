@@ -17,7 +17,17 @@ const Auth = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(postUsers({email, password}));
+        try {
+            const user = dispatch(postUsers({email, password}));
+            console.log(user.status, 'user');
+            if(currentStatus === 'success'){
+                navigate('/dashboard');
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+        
+        
         // dispatch(addUser(email, password));
         // console.log( users, currentStatus)
         }

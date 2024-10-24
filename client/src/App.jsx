@@ -22,7 +22,7 @@ function App() {
         <Route path='register' element={<Register/>}/>
         <Route path='newtrip' element={<NewTrip/>}/>
         <Route path='blog' element={<Blog/>}/>
-        <Route path='new-trip' element={<NewTrip/>}/>
+        <Route path='newtrip' element={<NewTrip/>}/>
         <Route path='uploadimage' element={<ImageUpload/>}/>
         <Route path='dashboard' element={<DashBoardLayout/>}>
           <Route index element={<TripDescription/>}/> 
