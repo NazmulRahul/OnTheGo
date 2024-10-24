@@ -1,9 +1,10 @@
 import React from 'react'
+import Welcome from '../components/Welcome'
 
 const Home = () => {
   return (
-    <div>
-      <h1> Home</h1>
+    <div className='w-screen h-auto flex flex-col items-center justify-start'>
+      <Welcome/>
     </div>
   )
 }

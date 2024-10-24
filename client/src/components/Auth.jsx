@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { allUsers ,  status , addUser} from "../redux/authSlice";
-
+import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
     const [email, setEmail] = useState("");
@@ -11,6 +11,8 @@ const Auth = () => {
     const dispatch = useDispatch();
     const currentStatus = useSelector(status);
     const users = useSelector(allUsers);
+    const navigate = useNavigate(); 
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,7 +24,7 @@ const Auth = () => {
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                     <div className="flex justify-end">
-                        <p className="px-4  text-gray-600 text-[20px] cursor-pointer hover:text-gray-900 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-100">
+                        <p onClick={()=>navigate('/')} className="px-4  text-gray-600 text-[20px] cursor-pointer hover:text-gray-900 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-100">
                             x
                         </p>
                     </div>
@@ -71,7 +73,7 @@ const Auth = () => {
                             </button>
                             <p className="text-sm font-light text-gray-600">
                                 Don’t have an account yet?{" "}
-                                <p className="font-medium hover:underline cursor-pointer">
+                                <p className="font-medium hover:underline cursor-pointer" onClick={()=>navigate('/register')}>
                                     Sign up
                                 </p>
                             </p>
