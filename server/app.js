@@ -8,6 +8,7 @@ const corsOptions = require('./config/corsOptions');
 const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
+const connectDB = require('./config/MongoConfig');
 const PORT = process.env.PORT || 3500;
 
 app.use(logger);
@@ -51,4 +52,8 @@ app.all('*', (req, res) => {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const start=async ()=>{
+    await connectDB();
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+start();
