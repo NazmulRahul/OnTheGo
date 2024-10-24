@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { createItinerary, getAllItineraries } = require('../controllers/ItineraryController');
+const { createItinerary, deleteItinerary } = require('../controllers/ItineraryController');
 
-router.route('/').post(createItinerary).get(getAllItineraries);
+router.route('/').post(createItinerary).delete(deleteItinerary);
 
 
 module.exports = router;
