@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const Trip = require('./Trip');
 
 const UserSchema = new mongoose.Schema({
     email: {
@@ -24,17 +25,23 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: 'user'
     },
-    travelLog: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Itinerary'
-    }],
-    blogs: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Blog'
-    }],
-    trips: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Trip'
+    plans: [
+        {
+        title: String,
+
+        itinerary: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Itinerary'
+        },
+        blog: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Blog'
+        },
+        trip: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Trip',
+            default: null
+        }
     }],
 });
 

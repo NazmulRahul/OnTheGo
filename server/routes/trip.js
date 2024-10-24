@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const {getAllTrips,
-    getTripById,
-    createTrip,
+const {
     updateTrip,
-    deleteTrip}=require('../controllers/TripController');
+    createTrip,
+    deleteTrip
+}=require('../controllers/TripController');
 
 ///api/v1/
-router.route('/').get(getAllTrips).post(createTrip);
-router.route('/:id').get(getTripById).patch(updateTrip).delete(deleteTrip);
+router.route('/').post(createTrip);
+router.route('/:id').patch(updateTrip).delete(deleteTrip);
 
 
 module.exports = router;

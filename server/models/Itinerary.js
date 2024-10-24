@@ -2,41 +2,56 @@ const mongoose = require('mongoose')
 
 const ItinerarySchema =new mongoose.Schema({
     Destination: String,
-    Date:Date,
+    Date:String,
     budget:String,
-    Places:[{
-        name: String,
-        formatted_location: String,
-        location: {
-              lat: String,
-              lng: String
-        }
-    },],
+    Places:{
+        list:[
+            {
+                name: String,
+                formatted_location: String,
+                location: {
+                    lat: String,
+                    lng: String
+                },
+            
+            }
+        ],
+        description: String
+    },
     TransPorts:[{
         Name:String,
         Departure:String,
-        Price:String        
+        Price:String,
+        description: String     
     },],
-    Hotels:[
-        {
-            name: String,
-            formatted_location: String,
-            location: {
-                lat: String,
-                lng: String
+    Hotels:{
+        list:[
+            {
+                name: String,
+                formatted_location: String,
+                location: {
+                    lat: String,
+                    lng: String
+                },
+            
             }
-        },
-    ],
-    Restaurents:[
-        {
-            name: String,
-            formatted_location: String,
-            location: {
-                  lat: String,
-                  lng: String
-            },
-        }
-    ],
+        ],
+        description: String
+    },
+    Restaurents:{
+        list:[
+                {
+                    name: String,
+                    formatted_location: String,
+                    location: {
+                        lat: String,
+                        lng: String
+                    },
+                
+                }
+            ],
+        description: String
+    },
     Weather:{
         Temperature:String,
         Humidity:String,
