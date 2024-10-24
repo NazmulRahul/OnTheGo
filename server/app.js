@@ -5,7 +5,7 @@ const cors = require('cors');
 const verifyJwt = require('./middleware/verifyJwt');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./config/MongoConfig');
-const PORT = process.env.PORT || 3500;
+const PORT = process.env.PORT || 3000;
 
 
 app.use(cors());
@@ -21,10 +21,9 @@ app.use(cookieParser());
 
 
 // routes
-app.use('/', require('./routes/root'));
-app.use('/register', require('./routes/register'));
-app.use('/auth', require('./routes/auth'));
-app.use('/logout', require('./routes/logout'));
+app.use('/api/v1/auth', require('./routes/auth'));
+// app.use('/auth', require('./routes/auth'));
+// app.use('/logout', require('./routes/logout'));
 
 app.use(verifyJwt);
 
