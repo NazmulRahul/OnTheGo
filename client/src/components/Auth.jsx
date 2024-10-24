@@ -2,23 +2,21 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { allUsers } from "../redux/authSlice";
-import status from "../redux/authSlice";
-import { addUser } from "../redux/authSlice";
-import postUsers from "../redux/authSlice";
+import { allUsers ,  status , addUser} from "../redux/authSlice";
 
 
 const Auth = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
+    const currentStatus = useSelector(status);
     const users = useSelector(allUsers);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        // dispatch(postUsers())
-        setEmail("");
-        setPassword("");
-    }
+        dispatch(addUser(email, password));
+        console.log( users, currentStatus)
+        }
     return (
         <section className="fixed top-0 left-0 backdrop-blur-[7px] h-screen w-full  font-sans z-10">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

@@ -14,7 +14,7 @@ const Navbar = () => {
         <input type="text" className="w-[400px] h-8 border-2 border-gray-600  rounded-md ml-10" />
         <div className='ml-6 flex flex-row w-[130px] justify-between'>
           <Link className='text-lg font-semibold' to='login'>Log in</Link>
-          <Link className='text-lg font-semibold' to='/'>Sign up</Link>
+          <Link className='text-lg font-semibold' to='/register'>Sign up</Link>
         </div>
       </section>
     </div>
