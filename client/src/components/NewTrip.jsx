@@ -3,6 +3,15 @@ import { useState } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
 import { budget } from "../constants";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import selectAllTrips from "../redux/tripSlice";
+import { postTrip } from "../redux/tripSlice";
+
+// import { addTrip } from "../redux/slices/tripsSlice";
+
+
+
+
 const NewTrip = () => {
     const navigate = useNavigate();
     const [value, setValue] = useState({
@@ -11,7 +20,17 @@ const NewTrip = () => {
     });
     console.log(value);
     const [destination, setDestination] = useState("");
+    const [source, setSource] = useState("");
     const [tripBudget, setTripBudget] = useState("Budget");
+
+    const dispatch = useDispatch();
+    // const trips = useSelector(selectAllTrips);
+
+    const handleSubmit = () => {
+        dispatch(postTrip({journeyDate:value.startDate,returnDate:value.endDate,destination,startingPoint:source, tripBudget}));
+    }
+
+    
     return (
         <section className="fixed top-0 left-0 backdrop-blur-[7px] h-screen w-full  font-sans z-10">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -30,6 +49,17 @@ const NewTrip = () => {
                         </h1>
                         <div class="w-62">
                             <div class="w-full max-w-sm min-w-[200px] mb-4">
+                                <input
+                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                    value={source}
+                                    onChange={(e) =>
+                                        setSource(e.target.value)
+                                    }
+                                    placeholder="Source"
+                                    required={true}
+                                />
+                            </div>
+                            <div class="w-full max-w-sm min-w-[200px] ">
                                 <input
                                     class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                     value={destination}
@@ -66,7 +96,7 @@ const NewTrip = () => {
                             </div>
                         </div>
                     </div>
-                    <button className="p-2 border text-[#fff] font-semibold hover:bg-slate-700 border-gray-200 m-2 rounded-lg bg-slate-500">
+                    <button onClick={handleSubmit} className="p-2 border text-[#fff] font-semibold hover:bg-slate-700 border-gray-200 m-2 rounded-lg bg-slate-500">
                         Create Trip Plan
                     </button>
                 </div>

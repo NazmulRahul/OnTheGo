@@ -12,22 +12,22 @@ import TravelExperience from "./components/travelExperience";
 import ImageUpload from "./components/ImageUpload";
 
 function App() {
-    return (
-        <Routes>
-            <Route path="/" element={<ParentLayout />}>
-                <Route index element={<Home />} />
-                <Route path="login" element={<Login />} />
-                <Route path="register" element={<Register />} />
-                <Route path="new-trip" element={<NewTrip />} />
-                <Route path="dashboard" element={<DashBoardLayout />}>
-                    <Route index element={<TripDescription />} />
-                    <Route path="itinerary" element={<Itinerary />} />
-                    <Route path="experience" element={<TravelExperience />} />
-                </Route>
-                <Route path="dummy" element={<ImageUpload/>}/>
-            </Route>
-        </Routes>
-    );
+
+  return (
+    <Routes>
+      <Route path='/' element={<ParentLayout/>} >
+        <Route index element={<Home/>}/>
+        <Route path='login' element={<Login/>}/>
+        <Route path='register' element={<Register/>}/>
+        <Route path='new-trip' element={<NewTrip/>}/>
+        <Route path='dashboard' element={<DashBoardLayout/>}>
+          <Route index element={<TripDescription/>}/> 
+          <Route path='itinerary' element={<Itinerary/>}/>
+          <Route path='experience' element={<TravelExperience/>}/> 
+        </Route>
+      </Route>
+    </Routes>
+  )
 }
 
 export default App;

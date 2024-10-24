@@ -21,7 +21,7 @@ const CreateBlog=async (descriptions) => {
                         content: `${description[0]} this is a travles description of some photos he took during his trip to Paris. Generate a blog from this. Your response should be in this json form {title:"",blog:""}.`
                     },
                 ],
-                response_format: { type: "json_object" },
+                response_format: { type: "json_object"},
                 model: "gpt-4o-mini",   
             });
             console.log(completion.choices[0].message.content)
