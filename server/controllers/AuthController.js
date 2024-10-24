@@ -45,4 +45,8 @@ const handleRegister = asyncWrapper(async (req,res)=>{
 
 })
 
-module.exports = { handleLogin, handleRegister };
+const handleLogout = asyncWrapper(async (req, res) => {
+    res.clearCookie('token');
+    res.status(200).json({ msg: 'Logged out' });
+});
+module.exports = { handleLogin, handleRegister,handleLogout };
