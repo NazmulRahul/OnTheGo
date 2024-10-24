@@ -5,6 +5,12 @@ import ParentLayout from './components/parentLayout'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import NewTrip from './components/NewTrip'
+import DashBoardLayout from './pages/usersDashboard'
+import TripDescription from './components/tripDescription'
+import Itinerary from './components/Itinerary'
+import TravelExperience from './components/travelExperience'
+
+
 function App() {
 
   return (
@@ -14,7 +20,11 @@ function App() {
         <Route path='login' element={<Login/>}/>
         <Route path='register' element={<Register/>}/>
         <Route path='new-trip' element={<NewTrip/>}/>
-
+        <Route path='dashboard' element={<DashBoardLayout/>}>
+          <Route index element={<TripDescription/>}/> 
+          <Route path='itinerary' element={<Itinerary/>}/>
+          <Route path='experience' element={<TravelExperience/>}/> 
+        </Route>
       </Route>
     </Routes>
   )
