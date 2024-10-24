@@ -15,7 +15,7 @@ const getPlaces = async (location,place,budget) => {
     /**
      * Constructs a URL for the Google Places Text Search API. It finds hotels or restaurants in the specified location based on the budget.
      */
-    const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=Best+${place}+in+${location}+and+budget+is+${budget}&key=AIzaSyDFQXhPWPhPiMumcCykcnx3XnxiRggpx_Q`;
+    const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=Best+${place}+in+${location}+and+budget+is+${budget}&key=${apiKey}`;
     try {
         const response = await axios.get(url);
         return response.data.results;
