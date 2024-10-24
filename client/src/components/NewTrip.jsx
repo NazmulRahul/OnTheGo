@@ -2,7 +2,9 @@ import React from "react";
 import { useState } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
 import { budget } from "../constants";
+import { useNavigate } from "react-router-dom";
 const NewTrip = () => {
+    const navigate = useNavigate();
     const [value, setValue] = useState({
         startDate: null,
         endDate: null,
