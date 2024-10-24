@@ -1,9 +1,7 @@
 import React from "react";
 
 const Auth = () => {
-    const [tempUser,setTempUser] = useState({
-        
-    })
+   
     return (
         <section className="fixed top-0 left-0 backdrop-blur-[7px] h-screen w-full  font-sans z-10">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
