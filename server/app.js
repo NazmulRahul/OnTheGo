@@ -22,6 +22,8 @@ app.use(cookieParser());
 
 // routes
 app.use('/api/v1/auth', require('./routes/auth'));
+// app.use('/api/v1/trip', require('./routes/trip'));
+app.use('/api/v1/itinerary', require('./routes/itinerary'));
 // app.use('/auth', require('./routes/auth'));
 // app.use('/logout', require('./routes/logout'));
 

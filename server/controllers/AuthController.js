@@ -1,11 +1,11 @@
-const User = require('../model/User')
+const User = require('../models/User')
 const asyncWrapper=require('../middleware/asyncWrapper')
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const handleLogin = async (req, res) => {
+const handleLogin = asyncWrapper( async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) return res.status(400).json({ 'message': 'Email and password are required.' });
 
@@ -29,7 +29,7 @@ const handleLogin = async (req, res) => {
     } else {
         res.status(401).json({ msg: 'Invalid credentials' });
     }
-};
+});
 
 const handleRegister = asyncWrapper(async (req,res)=>{
     const { name, email, password } = req.body;
