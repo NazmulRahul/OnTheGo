@@ -1,9 +1,9 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const Itinerary = require('./Itinerary');
 
 const TripSchema =new mongoose.Schema({
-    Source:String,
-    Place:String,
-    StartDate:Date,
+    email:String,
+    name:String,
     Images:[{
         imageUrl:String,
         imageDetails:String,

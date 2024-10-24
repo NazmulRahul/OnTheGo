@@ -25,24 +25,6 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: 'user'
     },
-    plans: [
-        {
-        title: String,
-
-        itinerary: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Itinerary'
-        },
-        blog: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Blog'
-        },
-        trip: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Trip',
-            default: null
-        }
-    }],
 });
 
 module.exports=mongoose.model('User',UserSchema);

@@ -1,11 +1,14 @@
 const mongoose = require('mongoose')
 
 const ItinerarySchema =new mongoose.Schema({
+    email: String,
+    name:String,
+    Source: String,
     Destination: String,
     Date:String,
     budget:String,
     Places:{
-        list:[
+        suggesstions:[
             {
                 name: String,
                 formatted_location: String,
@@ -25,7 +28,7 @@ const ItinerarySchema =new mongoose.Schema({
         description: String     
     },],
     Hotels:{
-        list:[
+        suggesstions:[
             {
                 name: String,
                 formatted_location: String,
@@ -39,7 +42,7 @@ const ItinerarySchema =new mongoose.Schema({
         description: String
     },
     Restaurents:{
-        list:[
+        suggeesstions:[
                 {
                     name: String,
                     formatted_location: String,
@@ -60,10 +63,5 @@ const ItinerarySchema =new mongoose.Schema({
     },
     Costs: String,
 })
-// {
-//     Total:String,
-//     Transport:String,
-//     Hotel:String,
-//     Restaurent:String
-// }
+
 module.exports=mongoose.model('Itinerary',ItinerarySchema);

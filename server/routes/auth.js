@@ -4,5 +4,5 @@ const {handleLogin,handleRegister,handleLogout} = require('../controllers/AuthCo
 
 router.post('/login', handleLogin);
 router.post('/register', handleRegister);
-router.post('/logout', handleLogout);
+// router.post('/logout', handleLogout);
 module.exports = router;
