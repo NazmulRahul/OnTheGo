@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const getWeather = async (location, date) => {
     try {
+        console.log('from weather api')
         const url = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${location}&dt=${date}`;
         const response = await axios.get(url);
         const {
@@ -77,7 +78,7 @@ const getTransport = async (type, startingPoint, destination) => {
         return content.parts[0];
     } catch (error) {
         console.error('Error fetching transport data:', error);
-        throw new Error("Error fetching transport data: " + error);
+        res.status(500).json({ error: "Server error! Failed to fetch transport data" });
     }
 };
 

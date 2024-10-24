@@ -11,8 +11,6 @@ const createItinerary = async (req, res) => {
     const { startingPoint, destination, journeyDate, returnDate, tripBudget } =
       req.body;
 
-    console.log(req.body);
-
     const hotels = await getPlaces(destination, 'Hotels', tripBudget, 5);
     const restaurants = await getPlaces(
       destination,
@@ -27,34 +25,45 @@ const createItinerary = async (req, res) => {
       10
     );
     const weatherInfo = await getWeather(destination, journeyDate);
+    console.log('weather api not guilty');
     const transports = await getTransport('Bus', startingPoint, destination);
-
-    const itinerary = await Itinerary.create({
-      Destination: destination,
-      Date: journeyDate,
-      budget: tripBudget,
-      Places: touristSpots,
-      TransPorts: transports,
-      Hotels: hotels,
-      Restaurents: restaurants,
-      Weather: weatherInfo,
-      Costs: '2000', // Placeholder for actual cost calculation
-    });
-
-    if (!itinerary) {
-      return res.status(400).json({ error: 'Failed to create Itinerary' });
+    console.log('transport api not guilty');
+    if (
+      !hotels ||
+      !restaurants ||
+      !touristSpots ||
+      !weatherInfo ||
+      !transports
+    ) {
+      return res.status(400).json({ error: 'Failed to fetch data' });
     }
+    var itinerary;
 
-    const user = User.findOne({ email: req.email });
-    user.plans.push({
-      title: destination,
-      itinerary: itinerary._id,
-      blogs: null,
-      trips: null,
-    });
-    const res = await user.save();
+    try {
+      itinerary = await Itinerary.create({
+        destination: destination,
+        date: journeyDate,
+        budget: tripBudget,
+        places: touristSpots,
+        transports: transports,
+        hotels: hotels,
+        restaurants: restaurants,
+        weather: {
+          temperature: 30.0,
+          humidity: 78.5,
+          windSpeed: 5.5,
+          description: 'very good',
+        },
+        costs: 2000, // Placeholder for actual cost calculation
+      });
+      console.log('Itinerary created:', itinerary);
+    } catch (error) {
+      console.error('Error creating itinerary:', error.message);
+    }
+    const { _id } = itinerary;
 
     res.status(201).json({
+      id,
       touristSpots,
       transports,
       hotels,

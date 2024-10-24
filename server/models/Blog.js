@@ -1,11 +1,10 @@
 const mongoose =require('mongoose')
 
 const BlogSchema =new mongoose.Schema({
-    images:[String],
-    story:{
-        type:String,
-        required:true,
-    },
+    email:String,
+    title:String,
+    name:String,
+    story:[String]
 })
 
 module.exports=mongoose.model('Blog',BlogSchema);
