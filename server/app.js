@@ -19,7 +19,7 @@ app.use(express.json());
 
 //middleware for cookies
 app.use(cookieParser());
-
+app.use('/vision', require('./routes/vision'));
 // routes
 app.use('/api/v1/auth', require('./routes/auth'));
 // app.use('/api/v1/trip', require('./routes/trip'));
