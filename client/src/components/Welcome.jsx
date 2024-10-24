@@ -11,7 +11,7 @@ const Welcome = () => {
         <h1 className='text-5xl font-bold'>One app for all your travel planning needs</h1>
             <p className='mt-7 text-2xl'>Create detailed itineraries, explore user-shared guides, and manage your</p>
             <p className='mt-2 text-2xl'>bookings seamlessly — all in one place.</p>
-            <Link to={'/dashboard'} className='rounded-2xl mt-6 h-[50px] w-[150px] bg-red-500 flex items-center justify-center text-2xl font-semibold'>Start Planing</Link>
+            <Link to={'newtrip'} className='rounded-2xl mt-6 h-[50px] w-[150px] bg-gray-900 text-white flex items-center justify-center text-2xl font-semibold'>Start Planing</Link>
         </section>
         <section className='flex flex-row  w-full h-[350px] px-[10%] gap-5 '>
             <div  className="w-[40%] h-full rounded-2xl" >
