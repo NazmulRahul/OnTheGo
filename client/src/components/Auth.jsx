@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { allUsers ,  status , addUser} from "../redux/authSlice";
 import { useNavigate } from "react-router-dom";
-
+import {postUsers} from '../redux/authSlice'
+ 
 const Auth = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,6 +17,7 @@ const Auth = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(postUsers({email, password}));
         dispatch(addUser(email, password));
         console.log( users, currentStatus)
         }

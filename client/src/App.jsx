@@ -9,6 +9,8 @@ import DashBoardLayout from './pages/usersDashboard'
 import TripDescription from './components/tripDescription'
 import Itinerary from './components/Itinerary'
 import TravelExperience from './components/travelExperience'
+import Blog from './components/blog'
+
 
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
         <Route path='login' element={<Login/>}/>
         <Route path='register' element={<Register/>}/>
         <Route path='newtrip' element={<NewTrip/>}/>
+        <Route path='blog' element={<Blog/>}/>
         <Route path='dashboard' element={<DashBoardLayout/>}>
           <Route index element={<TripDescription/>}/> 
           <Route path='itinerary' element={<Itinerary/>}/>
