@@ -18,8 +18,8 @@ const Auth = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(postUsers({email, password}));
-        dispatch(addUser(email, password));
-        console.log( users, currentStatus)
+        // dispatch(addUser(email, password));
+        // console.log( users, currentStatus)
         }
     return (
         <section className="fixed top-0 left-0 backdrop-blur-[7px] h-screen w-full  font-sans z-10">

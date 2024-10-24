@@ -1,5 +1,7 @@
 import React from 'react'
 import { useNavigate} from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import {registerUser} from '../redux/authSlice'
 
 const Register = () => {
     const [email, setEmail] = React.useState("");
@@ -8,21 +10,27 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword] = React.useState("");
     const reg=true;
     const navigate= useNavigate();
+    const dispatch = useDispatch();
 
     const signUp = (e) => {
         e.preventDefault();
-        console.log(email, password, name, confirmPassword);
+        if(!password || !email || !name || !confirmPassword || password!==confirmPassword){
+            alert('Please fill all fields correctly')
+        }
+
+        dispatch(registerUser({email, password, name}))
+        
     }
 
     return (
-        <section className="fixed top-0 left-0 backdrop-blur-[7px] bg-blue-800/20 h-screen w-full  font-sans z-10">
+        <section className="fixed top-0 left-0 backdrop-blur-[7px] bg-blue-800/20 h-screen w-full  font-sans z-[100]">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto ">
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                     <div
                         className="flex justify-end"
                         onClick={() => navigate("/")}
                     >
-                        <p className="px-4 hover:cursor-pointer">x</p>
+                        <p className="px-4 hover:cursor-pointer text-black">x</p>
                     </div>
                     
                     {

@@ -1,18 +1,17 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import preview from "../assets/preview.png";  
+import preview from "../assets/preview.png";
 const ImageUpload = () => {
-    const navigate=useNavigate()
+    const navigate = useNavigate();
     const [description, setDescription] = useState("");
     const [uploading, setUploading] = useState(false);
     const [uploaded, setUploaded] = useState(false);
-    const [upload,setUpload]=useState(true)
-    const [loading,setLoading]=useState(false)
-    const [image,setImage]=useState(null)
-    const handleImageUpload = (uploadedImage) => {
-        setImage(uploadedImage);
-    };
+    const [upload, setUpload] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const [image, setImage] = useState(null);
+ 
+    const [imgData, setImgData] = useState(null);
 
     const handleImageChange = (event) => {
         const file = event.target.files[0];
@@ -25,25 +24,44 @@ const ImageUpload = () => {
         };
         reader.readAsDataURL(file);
     };
-    const handleUpload = async () => {  }
-    const handleCancel =async()=>{
+    const handleUpload = async () => {
+        setLoading(true);
+        const formData = new FormData();
+        formData.append("image", imgData);
 
-    }
+        console.log(formData);
+        try {
+            const response = await axios.post(
+                // http://${url}/public/image/upload,
+                // formData
+            );
+            if (response.status === 200) {
+                setUpload(true);
+            } else {
+                alert("Network error. Try again");
+            }
+        } catch (error) {
+            alert("Network error. Try again");
+            console.log(error);
+        }
+    };
     return (
-        <section className=" fixed w-full backdrop-blur-[6px] bg-black/15 h-[110vh] font-sans z-20">
+        <section className=" fixed w-full backdrop-blur-[6px] bg-black/15 h-[110vh] font-sans z-[100]">
             <div className="flex w-[800px] flex-col items-center justify-center px-6 py-8 mx-auto ">
                 <div className="w-full bg-[#faf6f6] rounded-lg border h-[90vh] shadow-md mt-[20px] overflow-scroll">
                     <div className="flex justify-end">
                         <p
                             className="px-4  text-gray-600 text-[20px] cursor-pointer hover:text-gray-900 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-100"
-                            onClick={()=>useNavigate('/')}
+                            onClick={() => navigate("/")}
                         >
                             x
                         </p>
                     </div>
-                    <div class="flex flex-col justify-center p-4">
+                    <div class="flex flex-col justify-center items-center p-4">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-800 md:text-2xl flex justify-center">
-                            <span class="text-blue-700 px-2 font-bold">Save</span>
+                            <span class="text-blue-700 px-2 font-bold">
+                                Save
+                            </span>
                             {} Save your experiences
                         </h1>
                         <h2 class="text-gray-600 font-semibold flex justify-center ">
@@ -88,7 +106,6 @@ const ImageUpload = () => {
                                         accept="image/png, image/jpg, image/jpeg"
                                         class="hidden"
                                         onChange={handleImageChange}
-                                        
                                     />
                                 </label>
                             </div>
@@ -98,24 +115,11 @@ const ImageUpload = () => {
                                     class="size-80 border border-gray-200 rounded-md shadow-sm"
                                     src={image}
                                     alt="image"
-                                />
-                                <div className="flex flex-row">
-                                    <button
-                                        class="rounded-lg border p-2 m-2 bg-blue-500 text-white font-semibold hover:bg-blue-600 flex justify-center"
-                                        onClick={handleUpload}
-                                    >
-                                        Upload
-                                    </button>
-                                    <button
-                                        class="rounded-lg border p-2 m-2 bg-blue-500 text-white font-semibold hover:bg-blue-600 flex justify-center"
-                                        onClick={handleCancel}
-                                    >
-                                        Cancel
-                                    </button>
-                                </div>
-                                {loading && <Loader />}
+                                />                                
                             </div>
                         )}
+                        <textarea className="border-solid border-1 w-[45%] h-20 text-black px-2" placeholder="write down what you wise" value={description} onChange={(e)=>setDescription(e.target.value)}/>
+                        <button onClick={handleUpload} className=" mt-2 w-[100px] h-[40px] rounded-lg bg-indigo-500 opacity-100 hover:opacity-75">Upload</button>
                     </div>
                 </div>
             </div>
@@ -123,4 +127,4 @@ const ImageUpload = () => {
     );
 };
 
-export default ImageUpload;
+export default ImageUpload;

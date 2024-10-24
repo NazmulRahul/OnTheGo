@@ -5,7 +5,7 @@ import Experiences from './experiences';
 const TravelExperience = () => {
   const navigate = useNavigate();
   return (
-    <div className='w-[100%] h-full mt-11  flex justify-end pr-25' >
+    <div className='w-full h-full mt-11  flex justify-end pr-25' >
 
         <section className='w-[60%] h-full  bg-gray-900 text-white' >
             <div className="fixed top-12 left-0px h-10 w-56  flex gap-[2px]">
