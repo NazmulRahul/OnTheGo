@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 
 const ParentLayout = () => {
   return (
-    <div className='bg-slate-600 w-screen h-screen flex justify-center items-center pt-14'>
+    <div className='bg-white w-screen min-h-screen flex justify-center items-center pt-14'>
       <Navbar />
       <Outlet />
     </div>
