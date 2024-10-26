@@ -8,6 +8,7 @@ const initialState = {
   users: [],
   status: 'pending',
   error: null,
+  isSignedIn: false,
 };
 export const postUsers = createAsyncThunk('auth/postUsers ', async (user) => {
   try {
@@ -46,6 +47,14 @@ const userSlice = createSlice({
         return { payload: { email, password } };
       },
     },
+    signedOut: {
+      reducer: (state, action) => {
+        state.isSignedIn = false;
+      },
+      prepare: () => {
+        return { payload: {} };
+      },
+    },
   },
   extraReducers(builder) {
     builder
@@ -54,11 +63,13 @@ const userSlice = createSlice({
       })
       .addCase(postUsers.fulfilled, (state, action) => {
         state.status = 'success';
+        state.isSignedIn = true;
       });
   },
 });
 
 export const status = (state) => state.auth.status;
 export const allUsers = (state) => state.auth.users;
-export const { addUser } = userSlice.actions;
+export const signedIn = (state) => state.auth.isSignedIn;
+export const { addUser, signedOut } = userSlice.actions;
 export default userSlice.reducer;

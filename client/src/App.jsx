@@ -11,6 +11,7 @@ import Itinerary from './components/Itinerary'
 import TravelExperience from './components/travelExperience'
 import Blog from './components/blog'
 import ImageUpload from "./components/ImageUpload";
+import Logout from './components/logout'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path='blog' element={<Blog/>}/>
         <Route path='newtrip' element={<NewTrip/>}/>
         <Route path='uploadimage' element={<ImageUpload/>}/>
+        <Route path='logout' element={<Logout/>}/>
         <Route path='dashboard' element={<DashBoardLayout/>}>
           <Route index element={<TripDescription/>}/> 
           <Route path='itinerary' element={<Itinerary/>}/>

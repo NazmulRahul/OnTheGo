@@ -5,7 +5,7 @@ import { test } from '../constants'
 
 const Travel = () => {
   return (
-    <div className= 'h-full w-full pt-[60px] flex flex-col justify-start items-center  gap-[30px]'>
+    <div className= 'h-full w-full pt-[60px] flex flex-col justify-start items-center  gap-[30px] pb-[40px]'>
       <p className='text-2xl font-semibold mb-5'>Destination</p>
       <section className='h-[120px] w-[50%]  flex flex-col justify-between items-center'>
             <p className='text-xl font-semibold'>Weather update</p>
@@ -25,7 +25,7 @@ const Travel = () => {
                 
             </div>
       </section>
-      <div  className='w-[60%] h-[200px]  overflow-y-scroll flex flex-col justify-start items-center mt-5'>
+      <div  className='w-[700px] h-[200px]  overflow-y-scroll flex flex-col justify-start items-center mt-5'>
         <p className='text-xl font-semibold'>Description</p>
         <p className='text-lg '>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -37,7 +37,7 @@ const Travel = () => {
 
       <p className='text-xl font-semibold mb-[-10px]'>Travel</p>
 
-      <div  className='w-[60%] h-[200px]  overflow-y-scroll flex flex-col justify-start items-center mt-5'>
+      <div  className='w-[700px] h-[200px]  overflow-y-scroll flex flex-col justify-start items-center mt-5'>
         <p className='text-xl font-semibold'>Travel description</p>
         <p className='text-lg '>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -47,7 +47,7 @@ const Travel = () => {
         </p>
       </div >
         <p className='text-xl font-semibold'>Some hotels you can use</p>
-        <ul className='flex flex-col w-[600px] h-[250px] overflow-y-scroll justify-start items-start gap-2'>
+        <ul className='flex flex-col w-[700px] h-[250px] overflow-y-scroll justify-start items-start gap-2'>
             {test && test.map((item)=> <li  className='  w-full h-auto'>
                 <p>{item.name}</p>
                 <p>{item.formatted_location}</p>

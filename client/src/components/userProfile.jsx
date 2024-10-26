@@ -26,6 +26,8 @@ const UserProfile = () => {
                
               
       </section>
+      <button onClick={()=>navigate('/logout')} className='mr-4 mt-4 w-[280px]  h-8 font-semibold text-lg bg-red-900 text-white  hover:opacity-100 rounded-lg'>Logout</button>
+0
     </div>
   )
 }
